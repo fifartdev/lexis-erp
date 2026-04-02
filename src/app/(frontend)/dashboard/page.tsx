@@ -1,6 +1,7 @@
 import { getPayload } from 'payload'
 import config from '@/payload.config'
 import { StatCard } from '@/components/admin/StatCard'
+import { ExpirationCalendar } from '@/components/admin/ExpirationCalendar'
 import Link from 'next/link'
 
 export default async function DashboardPage() {
@@ -45,6 +46,40 @@ export default async function DashboardPage() {
     },
     limit: 0,
     overrideAccess: true,
+  })
+
+  // Fetch all services with expiration dates for the calendar
+  const calendarServicesResult = await payload.find({
+    collection: 'services',
+    where: { expirationDate: { exists: true } },
+    limit: 500,
+    depth: 1,
+    overrideAccess: true,
+  })
+
+  const calendarEvents = calendarServicesResult.docs.map((service) => {
+    const expDate = new Date(service.expirationDate as string)
+    expDate.setHours(0, 0, 0, 0)
+    const daysLeft = Math.ceil((expDate.getTime() - today.getTime()) / 86_400_000)
+    const clientName =
+      typeof service.client === 'object' && service.client
+        ? (service.client as any).fullName
+        : ''
+
+    let color = '#16a34a' // green — active
+    let textColor = '#fff'
+    if (daysLeft < 0) { color = '#9ca3af'; textColor = '#fff' }       // expired — gray
+    else if (daysLeft <= 3) { color = '#dc2626'; textColor = '#fff' }  // critical — red
+    else if (daysLeft <= 14) { color = '#d97706'; textColor = '#fff' } // warning — amber
+    else if (daysLeft <= 30) { color = '#2563eb'; textColor = '#fff' } // upcoming — blue
+
+    return {
+      id: String(service.id),
+      title: clientName ? `${service.title} · ${clientName}` : service.title,
+      date: (service.expirationDate as string).split('T')[0],
+      color,
+      textColor,
+    }
   })
 
   return (
@@ -98,6 +133,11 @@ export default async function DashboardPage() {
             </svg>
           }
         />
+      </div>
+
+      {/* Expiration calendar */}
+      <div className="mb-8">
+        <ExpirationCalendar events={calendarEvents} />
       </div>
 
       {/* Expiring soon table */}
