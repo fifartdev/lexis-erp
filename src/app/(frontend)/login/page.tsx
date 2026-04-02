@@ -119,7 +119,7 @@ export default function LoginPage() {
         </div>
 
         <p className="mt-6 text-center text-xs text-white/30">
-          &copy; {new Date().getFullYear()} Lexis Agency ERP
+          &copy; {new Date().getFullYear()} Lexis Agency MyPortal
         </p>
       </div>
     </div>

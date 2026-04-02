@@ -52,7 +52,7 @@ export default async function DashboardPage() {
       <div className="mb-6">
         <h2 className="text-2xl font-bold text-gray-900">Πίνακας Ελέγχου</h2>
         <p className="text-gray-500 text-sm mt-1">
-          Καλώς ορίσατε στο Lexis Agency ERP
+          Καλώς ορίσατε στο Lexis Agency MyPortal
         </p>
       </div>
 
