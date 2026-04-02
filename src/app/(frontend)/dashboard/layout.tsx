@@ -10,7 +10,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
       <div className="flex-1 flex flex-col min-w-0">
         {/* Top bar */}
         <header className="bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
-          <h1 className="text-sm font-medium text-gray-500">Lexis Agency ERP</h1>
+          <h1 className="text-sm font-medium text-gray-500">Lexis Agency MyPortal</h1>
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-full bg-brand-100 flex items-center justify-center">
               <span className="text-brand-700 text-xs font-bold">
