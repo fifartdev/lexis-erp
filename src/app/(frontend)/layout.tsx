@@ -3,7 +3,7 @@ import './globals.css'
 
 export const metadata = {
   description: 'Lexis Agency ERP — Σύστημα Διαχείρισης Πελατών',
-  title: 'Lexis Agency ERP',
+  title: 'Lexis Agency MyPortal',
   icons: {
     icon: '/favicon.png',
   },
