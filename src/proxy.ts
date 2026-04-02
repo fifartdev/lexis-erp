@@ -17,7 +17,7 @@ function decodeJwtPayload(token: string): Record<string, any> | null {
   }
 }
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
 
   // Protect Payload admin panel — only superadmin allowed
