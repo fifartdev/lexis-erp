@@ -58,10 +58,10 @@ export default function EditServicePage() {
       const body: any = {
         title: form.title,
         startDate: form.startDate,
-        client: form.client || undefined,
+        client: form.client ? Number(form.client) : undefined,
         description: form.description || undefined,
         expirationDate: form.expirationDate || null,
-        serviceCategory: form.serviceCategory || null,
+        serviceCategory: form.serviceCategory ? Number(form.serviceCategory) : null,
       }
 
       const res = await fetch(`/api/services/${id}`, {

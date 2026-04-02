@@ -56,7 +56,7 @@ export default function NewClientPage() {
           landlinePhone: landlinePhone || undefined,
           mobilePhone: mobilePhone || undefined,
           description: description || undefined,
-          linkedUser: userData.doc.id,
+          linkedUser: Number(userData.doc.id),
         }),
       })
 

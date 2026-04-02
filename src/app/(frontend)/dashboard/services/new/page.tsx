@@ -43,11 +43,11 @@ function NewServiceForm() {
       const body: any = {
         title: form.title,
         startDate: form.startDate,
-        client: form.client || undefined,
+        client: form.client ? Number(form.client) : undefined,
       }
       if (form.description) body.description = form.description
       if (form.expirationDate) body.expirationDate = form.expirationDate
-      if (form.serviceCategory) body.serviceCategory = form.serviceCategory
+      if (form.serviceCategory) body.serviceCategory = Number(form.serviceCategory)
 
       const res = await fetch('/api/services', {
         method: 'POST',
