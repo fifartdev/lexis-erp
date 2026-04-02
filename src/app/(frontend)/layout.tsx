@@ -4,6 +4,9 @@ import './globals.css'
 export const metadata = {
   description: 'Lexis Agency ERP — Σύστημα Διαχείρισης Πελατών',
   title: 'Lexis Agency ERP',
+  icons: {
+    icon: '/favicon.png',
+  },
 }
 
 export default async function RootLayout(props: { children: React.ReactNode }) {
